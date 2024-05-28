@@ -11,7 +11,7 @@ find_package(Vulkan REQUIRED)
 add_subdirectory(lib/glfw)
 add_subdirectory(lib/glm)
 
-add_compile_options(-Wall)# -Wextra -Wpedantic)
+add_compile_options(-Wall -Wextra -Wpedantic)
 
 set(SOURCE_DIRECTORY src)
 file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS ${SOURCE_DIRECTORY}/*.cpp)
@@ -19,6 +19,7 @@ file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS ${SOURCE_DIRECTORY}/*.cpp)
 # add_executable(app ${SOURCE_FILES})
 add_executable(app src/main.cpp)
 target_include_directories(app PRIVATE ${SOURCE_DIRECTORY})
+target_include_directories(app PRIVATE lib/stb)
 
 set_target_properties(
     app PROPERTIES
